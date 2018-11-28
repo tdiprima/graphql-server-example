@@ -1,5 +1,9 @@
+# Write your query or mutation here
 query{
-  books {
-    author
+  records {
+    facility_name
+    total_costs
+    age_group
+    discharge_year
   }
 }
