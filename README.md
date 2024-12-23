@@ -1,25 +1,105 @@
-# A GraphQL server example
+# GraphQL Query Test
 
->  **A simple, straight forward guide to building a GraphQL server with Apollo Server.**
+## Overview
+This project is a GraphQL server implementation built using Apollo Server. It demonstrates basic querying and mutation capabilities, focusing on books and records data. MongoDB-like functionality is implemented using LokiJS, and additional records are fetched from an external API.
 
-## About this repository
+## Features
+- **GraphQL Queries**:
+  - Fetch a list of books.
+  - Retrieve external data from the SPARC API.
+  - Get the current date and time.
+- **GraphQL Mutations**:
+  - Add a new book to the local database.
+- **Data Storage**:
+  - Utilizes LokiJS for in-memory database storage with autosave enabled.
+- **External API Integration**:
+  - Fetches healthcare data from the SPARC API.
 
-This repository is the example application for the [_Getting Started_ guide](https://www.apollographql.com/docs/apollo-server/v2/getting-started.html) in the Apollo Server documentation.
-
-## Online sandbox
-
-Play with this example using [Glitch](https://glitch.com/) by clicking the following button:
-
-[![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/import/github/apollographql/graphql-server-example)
+## Prerequisites
+- Node.js (v14.x or higher recommended)
+- npm (comes with Node.js)
 
 ## Installation
+1. Clone the repository:
 
-1. Clone this repository: `git clone git@github.com:apollographql/graphql-server-example.git`
-2. `cd` into the `graphql-server-example` folder and run the following commands:
-    1. Run `npm install`
-    2. Run `node index.js`
-3. Open your browser and see the server running on `localhost:4000/graphql` with the GraphQL playground.
+   ```bash
+   git clone https://github.com/tdiprima/graphql-server-example.git
+   cd graphql-query-test
+   ```
 
-## Documentation
+2. Install dependencies:
 
-Check out the [official Apollo Server documentation](https://www.apollographql.com/docs/apollo-server/v2/) for more information.
+   ```bash
+   npm install
+   ```
+
+## Usage
+1. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+2. Open your browser and navigate to:
+
+   ```
+   http://localhost:4000/
+   ```
+
+3. Use the Apollo Server GraphQL playground to execute queries and mutations.
+
+## Example Queries
+
+### Fetch Records
+
+```graphql
+query {
+  records {
+    age_group
+    apr_drg_description
+    total_charges
+  }
+}
+```
+
+### Add a Book
+
+```graphql
+mutation {
+  addBook(title: "New Book", author: "Author Name") {
+    title
+    author
+  }
+}
+```
+
+### Fetch Books
+
+```graphql
+query {
+  books {
+    title
+    author
+  }
+}
+```
+
+## Project Structure
+- **`index.js`**: Main server file containing schema definitions, resolvers, and server setup.
+- **`books.json`**: LokiJS database file for storing books data.
+- **`package.json`**: Contains project metadata and dependencies.
+- **`query.rq`**: A query for healthcare data.
+
+## Dependencies
+- `apollo-server`: Provides the GraphQL server implementation.
+- `graphql`: GraphQL query language support.
+- `lokijs`: Lightweight JavaScript-based database.
+- `node-fetch`: Enables fetching data from the SPARC API.
+
+## Author
+Originally developed by Meteor Development Group.
+(Inferred from the `"author": "Meteor Development Group"` entry in the `package.json` file)
+
+Forked from https://github.com/akiraei/graphql-server-example
+
+<br>

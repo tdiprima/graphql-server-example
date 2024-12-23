@@ -1,7 +1,7 @@
 {
   "name": "graphql-server-example",
   "version": "1.0.0",
-  "description": "anybody's guess",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

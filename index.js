@@ -1,3 +1,14 @@
+/*
+This JavaScript code utilizes ApolloServer, a community-driven, open-source GraphQL server that works with any GraphQL schema. It sets up an Apollo Server and creates a GraphQL API.
+
+One of its functionalities is fetching specified health data from 'https://health.data.ny.gov/resource/gnzp-ekau.json' using node-fetch. It also creates, stores and queries a simple book collection using LokiJS, a fast, in-memory document-oriented datastore for Node.js.
+
+The code defines GraphQL types for 'Book', 'Date', and 'Record'. The 'Book' type contains attributes 'title' and 'author'. The 'Date' type has attributes 'now' and 'hello'. The 'Record' type includes health data parameters like 'abortion_edit_indicator', 'age_group', 'apr_drg_code', 'apr_drg_description', and so on.
+
+Queries and mutations for the types are defined in 'resolvers' - 'books', 'date', and 'records' queries fetch data based on the defined types while 'addBook' mutation adds a new book to the collection.
+
+Finally, the ApolloServer is started with the type definitions and resolvers, providing an API key if available, and the server is set to listen on the specified port, with a console log outputting the server URL when ready.
+*/
 const {ApolloServer, gql} = require('apollo-server');
 const loki = require('lokijs');
 const fetch = require('node-fetch');
@@ -75,8 +86,8 @@ const typeDefs = gql`
     type_of_admission: String
     zip_code_3_digits: String
   }
-# The "Query" type is the root of all GraphQL queries.
-    # (A "Mutation" type will be covered later on.)
+  # The "Query" type is the root of all GraphQL queries.
+  # (A "Mutation" type will be covered later on.)
   type Query {
     records: [Record]
     books: [Book]
